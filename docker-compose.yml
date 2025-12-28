@@ -3,7 +3,7 @@ services:
     container_name: nestjs
     image: node:krypton-alpine3.23
     working_dir: /srv/api
-    command: sh -c "yarn install && yarn run start"
+    command: sh -c "yarn install && yarn run start:dev"
     user: 1000:1000
     env_file:
       - .env
