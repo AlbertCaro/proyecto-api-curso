@@ -6,4 +6,8 @@ export class EncrypterService {
   async encrypt(text: string) {
     return await bcrypt.hash(text, 10);
   }
+
+  async compare(plainText: string, hash: string) {
+    return await bcrypt.compare(plainText, hash);
+  }
 }

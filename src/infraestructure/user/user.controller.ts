@@ -1,8 +1,8 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { GetAllUsers } from '../../domain/usecases/get-all-users.service';
+import { GetAllUsers } from '../../domain/usecases/user/get-all-users.usecase';
 import { User } from '../../domain/models/user.model';
 import { UserWriteDto } from './dto/user-write.dto';
-import { CreateUser } from '../../domain/usecases/create-user.usecase';
+import { CreateUser } from '../../domain/usecases/user/create-user.usecase';
 import { UserReadDto } from './dto/user-read.dto';
 
 @Controller('users')

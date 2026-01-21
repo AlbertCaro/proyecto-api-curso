@@ -1,4 +1,4 @@
-import { EncrypterService } from '../../src/core/encrypter.service';
+import { EncrypterService } from '../../src/core/common/encrypter.service';
 import * as bcrypt from 'bcrypt';
 
 describe('EncripterService', () => {

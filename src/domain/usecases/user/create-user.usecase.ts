@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { UserRepository } from '../../data/user.repository';
-import { User } from '../models/user.model';
-import { EncrypterService } from '../../core/encrypter.service';
+import { UserRepository } from '../../../data/user.repository';
+import { User } from '../../models/user.model';
+import { EncrypterService } from '../../../core/common/encrypter.service';
 
 @Injectable()
 export class CreateUser {

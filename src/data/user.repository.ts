@@ -17,4 +17,8 @@ export class UserRepository {
 
     return entity.toDomain();
   }
+
+  async findOneByEmail(email: string) {
+    return (await UserEntity.findOne({ where: { correo: email } }))?.toDomain();
+  }
 }

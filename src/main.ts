@@ -2,7 +2,7 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './di/app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import { CreateUser } from './domain/usecases/create-user.usecase';
+import { CreateUser } from './domain/usecases/user/create-user.usecase';
 import { User } from './domain/models/user.model';
 
 declare const module: any;
