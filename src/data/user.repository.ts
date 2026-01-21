@@ -21,4 +21,18 @@ export class UserRepository {
   async findOneByEmail(email: string) {
     return (await UserEntity.findOne({ where: { correo: email } }))?.toDomain();
   }
+
+  async findById(id: number) {
+    return (await UserEntity.findOneBy({ id }))?.toDomain();
+  }
+
+  async update(user: User) {
+    const entity = user.toDatabase();
+
+    await entity.save();
+  }
+
+  async delete(user: User) {
+    await user.toDatabase().remove();
+  }
 }

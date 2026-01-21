@@ -6,10 +6,21 @@ import { CreateUser } from '../domain/usecases/user/create-user.usecase';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../data/database/entity/user.entity';
 import { EncrypterService } from '../core/common/encrypter.service';
+import { UpdateUser } from '../domain/usecases/user/update-user.usecase';
+import { GetUserById } from '../domain/usecases/user/get-user-by-id.usecase';
+import { DeleteUser } from '../domain/usecases/user/delete-user.usecase';
 
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   controllers: [UserController],
-  providers: [UserRepository, GetAllUsers, CreateUser, EncrypterService],
+  providers: [
+    UserRepository,
+    GetAllUsers,
+    CreateUser,
+    GetUserById,
+    UpdateUser,
+    DeleteUser,
+    EncrypterService,
+  ],
 })
 export class UserModule {}
