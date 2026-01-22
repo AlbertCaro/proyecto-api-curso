@@ -6,6 +6,7 @@ import { AuthController } from '../infraestructure/auth/auth.controller';
 import { Login } from '../domain/usecases/auth/login.usecase';
 import { UserRepository } from '../data/user.repository';
 import { EncrypterService } from '../core/common/encrypter.service';
+import { JwtStrategy } from '../infraestructure/auth/jwt.strategy';
 
 @Module({
   imports: [
@@ -18,7 +19,13 @@ import { EncrypterService } from '../core/common/encrypter.service';
       },
     }),
   ],
-  providers: [TokenService, Login, UserRepository, EncrypterService],
+  providers: [
+    TokenService,
+    Login,
+    UserRepository,
+    EncrypterService,
+    JwtStrategy,
+  ],
   controllers: [AuthController],
 })
 export class AuthModule {}
