@@ -25,6 +25,7 @@ export class User extends BaseEntity {
     user.nombres = this.nombres;
     user.apellidos = this.apellidos;
     user.correo = this.correo;
+    user.password = this.password;
 
     return user;
   }

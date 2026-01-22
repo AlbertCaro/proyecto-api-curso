@@ -1,13 +1,8 @@
-import {
-  forwardRef,
-  Inject,
-  Injectable,
-  UnauthorizedException,
-} from '@nestjs/common';
-import { LoginCredentials } from '../../models/login-credentials.model';
+import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserRepository } from '../../../data/user.repository';
 import { EncrypterService } from '../../../core/common/encrypter.service';
 import { TokenService } from '../../../core/auth/token.service';
+import { LoginCredentialsDto } from '../../../infraestructure/auth/dto/login-credentials.dto';
 
 @Injectable()
 export class Login {
@@ -17,15 +12,12 @@ export class Login {
     private readonly encrypterService: EncrypterService,
   ) {}
 
-  async execute(login: LoginCredentials) {
+  async execute(login: LoginCredentialsDto) {
     const user = await this.userRepository.findOneByEmail(login.email);
 
     if (!user) {
       throw new UnauthorizedException('User not found');
     }
-
-    console.log(login);
-    console.log(user);
 
     const isPasswordValid = await this.encrypterService.compare(
       login.password,
