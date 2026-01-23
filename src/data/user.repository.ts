@@ -35,4 +35,8 @@ export class UserRepository {
   async delete(user: User) {
     await user.toDatabase().remove();
   }
+
+  async findByCode(code: number) {
+    return (await Usuario.findOneBy({ codigo: code }))?.toDomain();
+  }
 }

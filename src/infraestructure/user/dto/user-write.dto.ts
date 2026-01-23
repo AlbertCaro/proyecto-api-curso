@@ -3,6 +3,7 @@ import { User } from '../../../domain/models/user.model';
 import { PasswordMatch } from '../validator/password.validator';
 import { UniqueEmail } from '../validator/unique-email.validator';
 import { Role } from '../../../domain/models/role.enum';
+import { UniqueCode } from '../validator/unique-code.validator';
 
 export class UserWriteDto {
   @IsNotEmpty()
@@ -27,6 +28,7 @@ export class UserWriteDto {
   role: Role;
 
   @IsNotEmpty()
+  @UniqueCode()
   code: number;
 
   toDomain() {

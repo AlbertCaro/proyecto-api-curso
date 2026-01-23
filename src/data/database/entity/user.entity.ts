@@ -1,6 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
 import { User as UserModel } from '../../../domain/models/user.model';
-import { type } from 'node:os';
 import { Role } from '../../../domain/models/role.enum';
 
 @Entity()
@@ -8,16 +7,25 @@ export class Usuario extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   nombres: string;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   apellidos: string;
 
-  @Column()
+  @Column({
+    unique: true,
+    nullable: false,
+  })
   correo: string;
 
-  @Column()
+  @Column({
+    nullable: false,
+  })
   password: string;
 
   @Column({
@@ -27,7 +35,11 @@ export class Usuario extends BaseEntity {
   })
   rol: Role;
 
-  @Column()
+  @Column({
+    unique: true,
+    type: 'int',
+    nullable: false,
+  })
   codigo: number;
 
   toDomain() {

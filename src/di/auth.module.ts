@@ -15,7 +15,7 @@ import { JwtStrategy } from '../infraestructure/auth/jwt.strategy';
       global: true,
       secret: 'secret',
       signOptions: {
-        expiresIn: '1d',
+        expiresIn: '1h',
       },
     }),
   ],

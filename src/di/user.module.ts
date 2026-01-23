@@ -11,6 +11,8 @@ import { DeleteUser } from '../domain/usecases/user/delete-user.usecase';
 import { GetUserByEmail } from '../domain/usecases/user/get-user-by-email.usecase';
 import { CommonModule } from './common.module';
 import { UniqueEmailValidator } from '../infraestructure/user/validator/unique-email.validator';
+import { GetUserByCode } from '../domain/usecases/user/get-user-by-code.usecase';
+import { UniqueCodeValidator } from '../infraestructure/user/validator/unique-code.validator';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Usuario]), CommonModule],
@@ -21,9 +23,11 @@ import { UniqueEmailValidator } from '../infraestructure/user/validator/unique-e
     CreateUser,
     GetUserById,
     GetUserByEmail,
+    GetUserByCode,
     UpdateUser,
     DeleteUser,
     UniqueEmailValidator,
+    UniqueCodeValidator,
   ],
   exports: [GetUserByEmail],
 })

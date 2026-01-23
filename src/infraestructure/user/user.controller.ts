@@ -18,9 +18,13 @@ import { UpdateUser } from '../../domain/usecases/user/update-user.usecase';
 import { GetUserById } from '../../domain/usecases/user/get-user-by-id.usecase';
 import { DeleteUser } from '../../domain/usecases/user/delete-user.usecase';
 import { AuthGuard } from '@nestjs/passport';
+import { RoleGuard } from '../auth/role-guard.service';
+import { Auth } from '../auth/auth.decorator';
+import { Role } from '../../domain/models/role.enum';
 
-@UseGuards(AuthGuard('jwt'))
+@UseGuards(AuthGuard('jwt'), RoleGuard)
 @Controller('users')
+@Auth(Role.ADMINISTRATOR)
 export class UserController {
   constructor(
     private readonly getAllUsers: GetAllUsers,
