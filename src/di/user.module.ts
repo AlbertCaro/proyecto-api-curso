@@ -5,22 +5,26 @@ import { UserRepository } from '../data/user.repository';
 import { CreateUser } from '../domain/usecases/user/create-user.usecase';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from '../data/database/entity/user.entity';
-import { EncrypterService } from '../core/common/encrypter.service';
 import { UpdateUser } from '../domain/usecases/user/update-user.usecase';
 import { GetUserById } from '../domain/usecases/user/get-user-by-id.usecase';
 import { DeleteUser } from '../domain/usecases/user/delete-user.usecase';
+import { GetUserByEmail } from '../domain/usecases/user/get-user-by-email.usecase';
+import { CommonModule } from './common.module';
+import { UniqueEmailValidator } from '../infraestructure/user/validator/unique-email.validator';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User])],
+  imports: [TypeOrmModule.forFeature([User]), CommonModule],
   controllers: [UserController],
   providers: [
     UserRepository,
     GetAllUsers,
     CreateUser,
     GetUserById,
+    GetUserByEmail,
     UpdateUser,
     DeleteUser,
-    EncrypterService,
+    UniqueEmailValidator,
   ],
+  exports: [GetUserByEmail],
 })
 export class UserModule {}

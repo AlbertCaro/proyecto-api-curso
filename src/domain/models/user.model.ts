@@ -14,6 +14,7 @@ export class User {
 
   toDatabase() {
     const entity = new Entity();
+
     entity.id = this.id;
     entity.nombres = this.nombres;
     entity.apellidos = this.apellidos;

@@ -1,6 +1,7 @@
 import { IsEmail, IsNotEmpty } from 'class-validator';
 import { User } from '../../../domain/models/user.model';
 import { PasswordMatch } from '../validator/password.validator';
+import { UniqueEmail } from '../validator/unique-email.validator';
 
 export class UserWriteDto {
   @IsNotEmpty()
@@ -10,6 +11,7 @@ export class UserWriteDto {
   apellidos: string;
 
   @IsEmail()
+  @UniqueEmail()
   correo: string;
 
   @IsNotEmpty()
