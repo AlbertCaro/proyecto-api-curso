@@ -4,6 +4,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import { CreateUser } from './domain/usecases/user/create-user.usecase';
 import { User } from './domain/models/user.model';
+import { GetAllUsers } from './domain/usecases/user/get-all-users.usecase';
 
 declare const module: any;
 
@@ -16,6 +17,8 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+
+  app.setGlobalPrefix('api');
 
   const config = new DocumentBuilder()
     .setTitle('Cats example')
@@ -32,15 +35,20 @@ async function bootstrap() {
   }
 
   const createUser = app.get(CreateUser);
+  const getAllUsers = app.get(GetAllUsers);
 
-  const user = new User();
+  const users = await getAllUsers.execute();
 
-  user.correo = 'albertcaronava@gmail.com';
-  user.nombres = 'Alberto';
-  user.apellidos = 'Caro Navarro';
-  user.password = 'hola123';
+  if (users.length === 0) {
+    const user = new User();
 
-  await createUser.execute(user);
+    user.correo = 'albertcaronava@gmail.com';
+    user.nombres = 'Alberto';
+    user.apellidos = 'Caro Navarro';
+    user.password = 'hola123';
+
+    await createUser.execute(user);
+  }
 
   await app.listen(process.env.PORT ?? 3000);
 }
