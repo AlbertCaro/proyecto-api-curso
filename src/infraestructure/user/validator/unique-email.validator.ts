@@ -18,8 +18,8 @@ export class UniqueEmailValidator implements ValidatorConstraintInterface {
 
     return user === undefined;
   }
-  defaultMessage?(_?: ValidationArguments): string {
-    return 'Ya existe un usuario con el correo especificado.';
+  defaultMessage?(args?: ValidationArguments): string {
+    return `El email "${args?.value}" ya se encuentra registrado.`;
   }
 }
 

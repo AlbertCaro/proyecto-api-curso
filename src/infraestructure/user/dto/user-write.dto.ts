@@ -1,18 +1,19 @@
-import { IsEmail, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
 import { User } from '../../../domain/models/user.model';
 import { PasswordMatch } from '../validator/password.validator';
 import { UniqueEmail } from '../validator/unique-email.validator';
+import { Role } from '../../../domain/models/role.enum';
 
 export class UserWriteDto {
   @IsNotEmpty()
-  nombres: string;
+  names: string;
 
   @IsNotEmpty()
-  apellidos: string;
+  lastName: string;
 
   @IsEmail()
   @UniqueEmail()
-  correo: string;
+  email: string;
 
   @IsNotEmpty()
   @PasswordMatch()
@@ -21,13 +22,22 @@ export class UserWriteDto {
   @IsNotEmpty()
   confirmPassword: string;
 
+  @IsNotEmpty()
+  @IsEnum(Role)
+  role: Role;
+
+  @IsNotEmpty()
+  code: number;
+
   toDomain() {
     const model = new User();
 
-    model.nombres = this.nombres;
-    model.apellidos = this.apellidos;
-    model.correo = this.correo;
+    model.names = this.names;
+    model.lastName = this.lastName;
+    model.email = this.email;
     model.password = this.password;
+    model.role = this.role;
+    model.code = this.code;
 
     return model;
   }

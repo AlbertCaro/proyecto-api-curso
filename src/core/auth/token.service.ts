@@ -9,7 +9,7 @@ export class TokenService {
   async getToken(user: User) {
     const payload = {
       id: user.id,
-      email: user.correo,
+      email: user.email,
     };
 
     return await this.jwtService.signAsync(payload);

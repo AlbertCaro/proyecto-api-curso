@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { User as UserEntity } from './database/entity/user.entity';
+import { Usuario } from './database/entity/user.entity';
 import { User } from '../domain/models/user.model';
 
 @Injectable()
 export class UserRepository {
   async fetchAll() {
-    const users = await UserEntity.find();
+    const users = await Usuario.find();
 
     return users.map((user) => user.toDomain());
   }
@@ -19,11 +19,11 @@ export class UserRepository {
   }
 
   async findOneByEmail(email: string) {
-    return (await UserEntity.findOne({ where: { correo: email } }))?.toDomain();
+    return (await Usuario.findOne({ where: { correo: email } }))?.toDomain();
   }
 
   async findById(id: number) {
-    return (await UserEntity.findOneBy({ id }))?.toDomain();
+    return (await Usuario.findOneBy({ id }))?.toDomain();
   }
 
   async update(user: User) {

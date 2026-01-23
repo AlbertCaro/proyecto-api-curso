@@ -1,4 +1,4 @@
-import { User } from './entity/user.entity';
+import { Usuario } from './entity/user.entity';
 import { DataSourceOptions } from 'typeorm';
 
 export const DataSourceConfig: DataSourceOptions = {
@@ -8,6 +8,6 @@ export const DataSourceConfig: DataSourceOptions = {
   username: 'root',
   password: 'password',
   database: 'proyecto',
-  entities: [User],
+  entities: [Usuario],
   synchronize: true,
 };

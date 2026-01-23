@@ -1,6 +1,10 @@
+import { Role } from '../../../domain/models/role.enum';
+
 export class UserReadDto {
   id?: number;
-  nombres: string;
-  apellidos: string;
-  correo: string;
+  names: string;
+  lastName: string;
+  email: string;
+  role: Role;
+  code: number;
 }

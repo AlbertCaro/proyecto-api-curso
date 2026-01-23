@@ -19,9 +19,9 @@ export class UpdateUser {
       return null;
     }
 
-    user.correo = newUser.correo;
-    user.nombres = newUser.nombres;
-    user.apellidos = newUser.apellidos;
+    user.email = newUser.email;
+    user.names = newUser.names;
+    user.lastName = newUser.lastName;
     user.password = await this.encrypterService.encrypt(newUser.password);
 
     await this.repository.update(user);

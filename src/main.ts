@@ -6,6 +6,7 @@ import { CreateUser } from './domain/usecases/user/create-user.usecase';
 import { User } from './domain/models/user.model';
 import { GetAllUsers } from './domain/usecases/user/get-all-users.usecase';
 import { useContainer } from 'class-validator';
+import { Role } from './domain/models/role.enum';
 
 declare const module: any;
 
@@ -44,10 +45,12 @@ async function bootstrap() {
   if (users.length === 0) {
     const user = new User();
 
-    user.correo = 'albertcaronava@gmail.com';
-    user.nombres = 'Alberto';
-    user.apellidos = 'Caro Navarro';
+    user.email = 'albertcaronava@gmail.com';
+    user.names = 'Alberto';
+    user.lastName = 'Caro Navarro';
     user.password = 'hola123';
+    user.role = Role.ADMINISTRATOR;
+    user.code = 215818158;
 
     await createUser.execute(user);
   }
