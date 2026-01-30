@@ -1,6 +1,7 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany } from 'typeorm';
 import { User as UserModel } from '../../../domain/models/user.model';
 import { Role } from '../../../domain/models/role.enum';
+import { Inscripcion } from './inscription.entity';
 
 @Entity()
 export class Usuario extends BaseEntity {
@@ -41,6 +42,9 @@ export class Usuario extends BaseEntity {
     nullable: false,
   })
   codigo: number;
+
+  @OneToMany(() => Inscripcion, (inscripcion: Inscripcion) => inscripcion.usuario)
+  inscripciones: Inscripcion[];
 
   toDomain() {
     const user = new UserModel();
