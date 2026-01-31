@@ -2,6 +2,8 @@ import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany } from 't
 import { User as UserModel } from '../../../domain/models/user.model';
 import { Role } from '../../../domain/models/role.enum';
 import { Inscripcion } from './inscription.entity';
+import { Curso } from './course.entity';
+import { cursorTo } from 'readline';
 
 @Entity()
 export class Usuario extends BaseEntity {
@@ -32,7 +34,7 @@ export class Usuario extends BaseEntity {
   @Column({
     type: 'enum',
     enum: Role,
-    default: Role.STUDENT,
+    default: Role.STUDENT, 
   })
   rol: Role;
 
@@ -43,8 +45,11 @@ export class Usuario extends BaseEntity {
   })
   codigo: number;
 
-  @OneToMany(() => Inscripcion, (inscripcion: Inscripcion) => inscripcion.usuario)
+  @OneToMany(() => Inscripcion, (inscripcion: Inscripcion) => inscripcion.alumno)
   inscripciones: Inscripcion[];
+
+  @OneToMany(() => Curso, (curso: Curso) => curso.coordinador)
+  cursosCoordinados: Curso[];
 
   toDomain() {
     const user = new UserModel();

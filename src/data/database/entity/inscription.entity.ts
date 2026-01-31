@@ -14,8 +14,11 @@ export class Inscripcion extends BaseEntity {
     @Column()
     fecha: Date;
 
+    @Column()
+    precio: number;
+
     @ManyToOne(() => Usuario, (usuario: Usuario) => usuario.inscripciones)
-    usuario: Usuario;
+    alumno: Usuario;
 
     @ManyToOne(() => Curso, (curso: Curso) => curso.inscripciones)
     curso: Curso;
