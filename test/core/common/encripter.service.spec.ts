@@ -1,5 +1,5 @@
-import { EncrypterService } from '../../src/core/common/encrypter.service';
 import * as bcrypt from 'bcrypt';
+import { EncrypterService } from 'src/core/common/encrypter.service';
 
 describe('EncripterService', () => {
   let sut: EncrypterService;

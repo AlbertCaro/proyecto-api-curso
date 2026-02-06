@@ -3,7 +3,6 @@ import { User as UserModel } from '../../../domain/models/user.model';
 import { Role } from '../../../domain/models/role.enum';
 import { Inscripcion } from './inscription.entity';
 import { Curso } from './course.entity';
-import { cursorTo } from 'readline';
 
 @Entity()
 export class Usuario extends BaseEntity {

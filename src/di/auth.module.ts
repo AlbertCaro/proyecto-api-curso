@@ -7,6 +7,8 @@ import { Login } from '../domain/usecases/auth/login.usecase';
 import { UserRepository } from '../data/user.repository';
 import { EncrypterService } from '../core/common/encrypter.service';
 import { JwtStrategy } from '../infraestructure/auth/jwt.strategy';
+import { GetAuthenticatedUser } from 'src/domain/usecases/auth/get-authenticated-user.usecase';
+import { UserContextService } from 'src/core/auth/user-context.service';
 
 @Module({
   imports: [
@@ -21,7 +23,9 @@ import { JwtStrategy } from '../infraestructure/auth/jwt.strategy';
   ],
   providers: [
     TokenService,
+    UserContextService,
     Login,
+    GetAuthenticatedUser,
     UserRepository,
     EncrypterService,
     JwtStrategy,

@@ -8,6 +8,7 @@ import {
   Post,
   Put,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { GetAllUsers } from '../../domain/usecases/user/get-all-users.usecase';
 import { User } from '../../domain/models/user.model';
@@ -21,6 +22,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { RoleGuard } from '../auth/role-guard.service';
 import { Auth } from '../auth/auth.decorator';
 import { Role } from '../../domain/models/role.enum';
+import { IdInterceptor } from '../common/id.interceptor';
 
 @UseGuards(AuthGuard('jwt'), RoleGuard)
 @Controller('users')
@@ -60,6 +62,7 @@ export class UserController {
   }
 
   @Put(':id')
+  @UseInterceptors(IdInterceptor)
   async update(
     @Param('id') id: number,
     @Body() data: UserWriteDto,

@@ -29,6 +29,6 @@ import { UniqueCodeValidator } from '../infraestructure/user/validator/unique-co
     UniqueEmailValidator,
     UniqueCodeValidator,
   ],
-  exports: [GetUserByEmail],
+  exports: [GetUserByEmail, GetUserById],
 })
 export class UserModule {}

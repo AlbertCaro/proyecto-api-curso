@@ -1,11 +1,16 @@
-import { IsEmail, IsEnum, IsNotEmpty } from 'class-validator';
+import { IsEmail, IsEnum, IsNotEmpty, IsOptional } from 'class-validator';
 import { User } from '../../../domain/models/user.model';
 import { PasswordMatch } from '../validator/password.validator';
 import { UniqueEmail } from '../validator/unique-email.validator';
 import { Role } from '../../../domain/models/role.enum';
 import { UniqueCode } from '../validator/unique-code.validator';
+import { ApiHideProperty } from '@nestjs/swagger';
 
 export class UserWriteDto {
+  @ApiHideProperty()
+  @IsOptional()
+  id?: number;
+
   @IsNotEmpty()
   names: string;
 
