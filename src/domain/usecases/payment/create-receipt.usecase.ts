@@ -19,6 +19,14 @@ export class CreateReceipt {
       return null;
     }
 
+    const oldReceipt = await this.getReceipt.execute(payment);
+
+    console.log(oldReceipt);
+
+    if (oldReceipt) {
+      await this.repository.delete(oldReceipt);
+    }
+
     receipt.payment = payment;
 
     await this.repository.create(receipt);
