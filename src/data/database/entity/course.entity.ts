@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, ManyToOne, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { Inscripcion } from "./inscription.entity";
+import { Enrollment } from "./enrollment.entity";
 import { Usuario } from "./user.entity";
 import { Course } from "src/domain/models/course.model";
 
@@ -62,8 +62,8 @@ export class Curso extends BaseEntity {
     @Column({ type: 'int', default: 1 })
     estatus: number;
 
-    @OneToMany(() => Inscripcion, (inscripcion: Inscripcion) => inscripcion.curso)
-    inscripciones: Inscripcion[]
+    @OneToMany(() => Enrollment, (inscripcion: Enrollment) => inscripcion.curso)
+    inscripciones: Enrollment[]
 
     @ManyToOne(() => Usuario, (usuario: Usuario) => usuario.cursosCoordinados)
     coordinador: Usuario;

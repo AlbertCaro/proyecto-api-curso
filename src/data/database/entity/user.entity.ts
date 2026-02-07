@@ -1,7 +1,7 @@
 import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, OneToMany } from 'typeorm';
 import { User as UserModel } from '../../../domain/models/user.model';
 import { Role } from '../../../domain/models/role.enum';
-import { Inscripcion } from './inscription.entity';
+import { Enrollment } from './enrollment.entity';
 import { Curso } from './course.entity';
 
 @Entity()
@@ -44,8 +44,8 @@ export class Usuario extends BaseEntity {
   })
   codigo: number;
 
-  @OneToMany(() => Inscripcion, (inscripcion: Inscripcion) => inscripcion.alumno)
-  inscripciones: Inscripcion[];
+  @OneToMany(() => Enrollment, (inscripcion: Enrollment) => inscripcion.alumno)
+  inscripciones: Enrollment[];
 
   @OneToMany(() => Curso, (curso: Curso) => curso.coordinador)
   cursosCoordinados: Curso[];

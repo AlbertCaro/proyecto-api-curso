@@ -4,7 +4,7 @@ import { Usuario } from "./user.entity";
 import { Pago } from "./payment.entity";
 
 @Entity()
-export class Inscripcion extends BaseEntity {
+export class Enrollment extends BaseEntity {
     @PrimaryGeneratedColumn()
     id: number;
 

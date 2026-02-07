@@ -20,7 +20,7 @@ export class CourseRepository {
     await entity.save();
 
     return entity.toDomain();
-  }c
+  }
 
   async delete(couse: Course) {
     await couse.toDatabase().remove();
