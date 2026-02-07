@@ -20,6 +20,6 @@ describe('AuthController (e2e)', () => {
   it('/api (GET)', () => {
     return request(app.getHttpServer())
       .get('/api/users')
-      .expect(200);
+      .expect(200); 
   });
 });
